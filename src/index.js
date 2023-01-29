@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./styles/index.css";
 import App from "./components/App";
+import { BrowserRouter } from "react-router-dom";
 
 // Import deps needed to wire up apollo client
 import {
@@ -24,8 +25,11 @@ const client = new ApolloClient({
 
 // Render app wrapped in ApolloProvider component, which gets passed the client as a prop
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>,
+  // Wrap everything in the router to allow navigation
+  <BrowserRouter>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </BrowserRouter>,
   document.getElementById("root")
 );
