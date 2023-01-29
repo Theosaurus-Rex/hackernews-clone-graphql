@@ -4,6 +4,7 @@ import { AUTH_TOKEN } from "../constants";
 
 const Header = () => {
   const navigate = useNavigate();
+  // NOTE: Local storage is not generally a safe way to do auth but we're keeping it simple to focus on how GraphQL works
   const authToken = localStorage.getItem(AUTH_TOKEN);
   return (
     <div className="flex pa1 justify-between nowrap orange">
@@ -18,6 +19,7 @@ const Header = () => {
         <Link to="/search" className="ml1 no-underline black">
           search
         </Link>
+        {/* Make sure submit is only available for authenticated users */}
         {authToken && (
           <div className="flex">
             <div className="ml1">|</div>
